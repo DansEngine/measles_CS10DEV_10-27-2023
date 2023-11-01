@@ -51,27 +51,35 @@ void setup () {
   liney1 = liney;
   mouthOpen = smallerDimension*1/10;
   mouthReset = smallerDimension/smallerDimension;
+  //DIVS
+  rect( backGX, backGY, backGW, backGH );
+  //ellipse ( faceX, faceY, FaceD, FaceD );
   //
 }//END setup
 //
 void draw () {
-  stroke(2);
+  noStroke();
   fill(255);
   //rect( backGX, backGY, backGW, backGH );
   //
-  color measleColor = color( 255, random(0,60), random(0, 80));
+  //ellipse ( faceX, faceY, FaceD, FaceD );
+  color measleColor = color( random(0,255), random(0,255), random(0, 255));
   fill (measleColor);
-  measleX = random( backGX , FaceD ) ;
-  measleY = random( backGY , FaceD ) ;
-  measleD = random( smallerDimension*1/30, smallerDimension*1/10 ) ;
-  ellipse( measleX, measleY, measleD, measleD);
+  measleX = random( backGX , FaceD + backGX) ;
+  measleY = random( backGY , FaceD + backGY) ;
+  measleD = random( smallerDimension*1/20,smallerDimension*1/10) ;
+  //ellipse( measleX, measleY, measleD, measleD );
+  rect( measleX, measleY, measleD, measleD );
+  stroke(1);
   fill (resetColor);
   fill(255);
-  //fill(random(0,255), random(0,255), random(0,255));
-  ellipse( faceX, faceY, FaceD, FaceD );
+  ellipse ( faceX, faceY, FaceD, FaceD );
+  fill(random(0,255), random(0,255), random(0,255));
   ellipse(ERX, ERY, ERW, ERH);
   ellipse(ELX, ELY, ELW, ELH);
+  fill(255);
   triangle(noseX1, noseY1, noseX2, noseY2, noseX3, noseY3);
+  rect(backGX, backGY, FaceD/2 - sqrt(sq(FaceD/2)/2),FaceD/2 - sqrt(sq(FaceD/2)/2));
   strokeWeight (mouthOpen);
   line(linex, liney, linex1, liney1);
   strokeWeight (mouthReset);
