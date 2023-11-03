@@ -8,6 +8,7 @@ float noseX1, noseY1, noseX2, noseY2, noseX3, noseY3;
 float linex, liney, linex1, liney1;
 float mouthOpen, mouthReset;
 float measleX, measleY, measleD;
+float B1,B2,B3;
 int recog;
 color resetColor=#FFFFFF;
 //
@@ -49,6 +50,10 @@ void setup () {
   liney = backGY + smallerDimension*6/8;
   linex1 = noseX3;
   liney1 = liney;
+  //
+  B1 = backGX;
+  B2 = backGY;
+  B3 = FaceD/2 - sqrt(sq(FaceD/2)/2);
   mouthOpen = smallerDimension*1/10;
   mouthReset = smallerDimension/smallerDimension;
   //DIVS
@@ -65,22 +70,26 @@ void draw () {
   //ellipse ( faceX, faceY, FaceD, FaceD );
   color measleColor = color( random(0,255), random(0,255), random(0, 255));
   fill (measleColor);
-  measleX = random( backGX , FaceD + backGX - measleD*2);
-  measleY = random( backGY , FaceD + backGX - measleD*2);
-  measleD = random( smallerDimension*1/20, smallerDimension*1/10 );
+  measleX = random( backGX + (measleD/2), (backGX + backGW) - (measleD/2) );
+  //measleX = random( (backGX + backGW) - (measleD), (backGX + backGW) - (measleD)); //TEST
+  while ( measleX < B1+B3 ) measleX = random ( (backGX + backGW) - (measleD) );
+  measleY = random( backGY + (measleD/2), (backGX + backGH) - (measleD) );
+  //measleY = random( backGY + (measleD), (backGX + backGH) - (measleD));//Test
+  while ( measleY < B1+B3 ) measleY = random ( (backGY + backGH) - (measleD) );
+  measleD = random( smallerDimension*1/20, smallerDimension*1/20 );
   //ellipse( measleX, measleY, measleD, measleD );
-  rect( measleX, measleY, measleD, measleD );
-  noRect();
+  ellipse( measleX, measleY, measleD, measleD );
+  //noRect();
   stroke(1);
   fill (resetColor);
   fill(255);
-  ellipse ( faceX, faceY, FaceD, FaceD );
+  //ellipse ( faceX, faceY, FaceD, FaceD );
   fill(random(0,255), random(0,255), random(0,255));
   ellipse(ERX, ERY, ERW, ERH);
   ellipse(ELX, ELY, ELW, ELH);
   fill(255);
   triangle(noseX1, noseY1, noseX2, noseY2, noseX3, noseY3);
-  rect(backGX, backGY, FaceD/2 - sqrt(sq(FaceD/2)/2),FaceD/2 - sqrt(sq(FaceD/2)/2));
+  rect(B1, B2,B3 ,B3);
   strokeWeight (mouthOpen);
   line(linex, liney, linex1, liney1);
   strokeWeight (mouthReset);
