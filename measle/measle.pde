@@ -122,7 +122,9 @@ void draw () {
   //while ( measleY <= B1Y+B1 ) measleY = random ( (backGY + backGH) - (measleD) );
   measleD = random( smallerDimension*1/20, smallerDimension*1/20 );
   //ellipse( measleX, measleY, measleD, measleD );
+  if (sq(measleX-faceX)+sq(measleY-faceY) < sq((FaceD/2)-(measleD/2))) { //Neasle on Circle
   if (measlesON==true) ellipse( measleX, measleY, measleD, measleD );
+  }
   //noRect();
   stroke(1);
   fill (resetColor);
