@@ -79,7 +79,7 @@ void measleProgram() {
   //rect( backGX, backGY, backGW, backGH );
   //
   //ellipse ( faceX, faceY, FaceD, FaceD );
-  color measleColor = color( random(0,255), random(0,255), random(0, 255));
+  color measleColor = color( 255, random(0,84), random(0, 100));
   fill (measleColor);
   measleX = random( backGX + (measleD/2), (backGX + backGW) - (measleD/2) );
   //measleX = random( (backGX + backGW) - (measleD), (backGX + backGW) - (measleD)); //TEST
