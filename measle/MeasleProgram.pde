@@ -121,13 +121,13 @@ void measleProgram() {
 }//End measleProgram
 void trollingText() {
   fill(0);
-  fill(red);
+  fill(cyan);
   text(trollText, backGX, backGY, backGW, backGH );
   textAlign (CENTER, CENTER);
 }//END
 void StopTrolling() {
   fill(0);
-  fill(red);
+  fill(cyan);
   text(StopTroll, backGX, BOTTOM, backGW, backGH);
   textAlign (CENTER, BOTTOM);
 }
